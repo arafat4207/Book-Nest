@@ -1,6 +1,12 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main (String []args ){
-        System.out.println("hello ");
+        Scanner sc = new Scanner(System.in);
+    System.out.println("Enter your name: ");
+    String name = sc.nextLine();
+    System.out.println("Enter your id: ");
+    int id = sc.nextInt();
     }
 }
