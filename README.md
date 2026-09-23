@@ -1,2 +1,2 @@
 # Book-Nest
-A Java-based university project developed by a team of four students.
+Book Nest is an online library system that allows users to log in, explore books, purchase books, and read them online.
