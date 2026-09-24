@@ -17,6 +17,7 @@ public class Main {
             System.out.println("\nEnter your choice : ");
 
             int number = input.nextInt();
+            input.nextLine();
 
             switch (number) {
                 case 1:
@@ -36,7 +37,7 @@ public class Main {
                 System.out.println("5. Delete Book");
                 System.out.println("6. Borrow Book");
                 System.out.println("7. Return Book");
-                System.out.println("8.Purchase Book");
+                System.out.println("8. Purchase Book");
                 System.out.println("9. Exit");
                 System.out.print("\nEnter your choice: ");
 
@@ -140,8 +141,9 @@ public class Main {
 
                     case 8:
 
-                         System.out.print("Enter Purchase ID: ");
-                         String purchaseid = input.nextLine();
+                        // System.out.print("Enter Purchase ID: ");
+                        // String purchaseid = input.nextLine();
+                        String purchaseid = "P" + (purchases.size() + 101);
 
                         System.out.print("Enter Book ID: ");
                         String purchasebookid = input.nextLine();
@@ -159,7 +161,7 @@ public class Main {
                                     input.nextLine();
 
                                     Purchase p1 = new Purchase(
-                                            purchaseid,
+                                            purchaseid ,
                                             purchasebookid,
                                             p1book.getTitle(),
                                             customerName,
@@ -186,6 +188,7 @@ public class Main {
                     case 9 :
                         running = false ;
                         System.out.println("Thank You!");
+                        break;
 
 
                 
