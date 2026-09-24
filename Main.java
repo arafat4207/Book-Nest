@@ -1,4 +1,5 @@
 //import java.lang.classfile.instruction.SwitchCase;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -22,6 +23,7 @@ public class Main {
                     LibraryGUI.login();
 
                     Library library = new Library();
+                    ArrayList<Purchase> purchases = FileManager.loadPurchases();
 
             boolean running = true ;
              while (running) {
@@ -34,7 +36,8 @@ public class Main {
                 System.out.println("5. Delete Book");
                 System.out.println("6. Borrow Book");
                 System.out.println("7. Return Book");
-                System.out.println("8. Exit");
+                System.out.println("8.Purchase Book");
+                System.out.println("9. Exit");
                 System.out.print("\nEnter your choice: ");
 
                 int choice =input.nextInt();
@@ -135,7 +138,52 @@ public class Main {
 
                         break;
 
-                    case 8 :
+                    case 8:
+
+                         System.out.print("Enter Purchase ID: ");
+                         String purchaseid = input.nextLine();
+
+                        System.out.print("Enter Book ID: ");
+                        String purchasebookid = input.nextLine();
+
+                        Book p1book =library.searchBook(purchasebookid);
+
+                                if (p1book != null) {
+
+                                    System.out.print("Enter Customer Name: ");
+                                    String customerName = input.nextLine();
+
+                                    System.out.print("Enter Price: ");
+                                    double purchasePrice =input.nextDouble();
+
+                                    input.nextLine();
+
+                                    Purchase p1 = new Purchase(
+                                            purchaseid,
+                                            purchasebookid,
+                                            p1book.getTitle(),
+                                            customerName,
+                                            purchasePrice
+                                    );
+
+                                    purchases.add(p1);
+
+                                    FileManager.savePurchases(purchases);
+
+                                    System.out.println("\nPurchase successful!" );
+
+                                    p1.displayPurchase();
+
+                                } else {
+
+                                    System.out.println(
+                                            "\nBook not found."
+                                    );
+                                }
+
+                                break;
+
+                    case 9 :
                         running = false ;
                         System.out.println("Thank You!");
 

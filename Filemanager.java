@@ -8,7 +8,7 @@ public class FileManager {
 
     private static final String USER_FILE = "user.dat";
     private static final String BOOK_FILE = "book.dat";
-   // private static final String PURCHASE_FILE = "purchase.dat";
+    private static final String PURCHASE_FILE = "purchase.dat";
 
 
     // Save Readers
@@ -107,7 +107,7 @@ public class FileManager {
 
 
     // Save Purchases
-    /*public static void savePurchases(ArrayList<Purchase> purchases) {
+    public static void savePurchases(ArrayList<Purchase> purchases) {
 
         try {
 
@@ -126,28 +126,29 @@ public class FileManager {
 
             System.out.println("Error saving purchases.");
         }
-    }*/
+    }
 
 
     // Load Purchases
-    /*public static ArrayList<Purchase> loadPurchases() {
+    public static ArrayList<Purchase> loadPurchases() {
 
-        try {
+    try {
 
-            ObjectInputStream input =
-                    new ObjectInputStream(
-                            new FileInputStream(PURCHASE_FILE)
-                    );
+        ObjectInputStream input =
+                new ObjectInputStream(
+                        new FileInputStream(PURCHASE_FILE)
+                );
 
-            ArrayList<Purchase> purchases =
-                    (ArrayList<Purchase>) input.readObject();
+        ArrayList<Purchase> purchases =
+                (ArrayList<Purchase>) input.readObject();
 
-            input.close();
+        input.close();
 
-            return purchases;
+        return purchases;
 
-        } catch (Exception e) {
+    } catch (Exception e) {
 
-            return new ArrayList<>();
-        }*/
+        return new ArrayList<>();
     }
+}
+}
