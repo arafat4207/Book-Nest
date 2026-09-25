@@ -21,9 +21,9 @@ public class Main {
 
             switch (number) {
                 case 1:
-                    LibraryGUI.login();
+                    
+                      boolean success = LibraryGUI.login();
 
-                    boolean success = LibraryGUI.login();
 
                      if (success) {
 
