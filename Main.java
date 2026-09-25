@@ -141,8 +141,7 @@ public class Main {
 
                     case 8:
 
-                        // System.out.print("Enter Purchase ID: ");
-                        // String purchaseid = input.nextLine();
+                        
                         String purchaseid = "P" + (purchases.size() + 101);
 
                         System.out.print("Enter Book ID: ");
@@ -155,8 +154,7 @@ public class Main {
                                     System.out.print("Enter Customer Name: ");
                                     String customerName = input.nextLine();
 
-                                    System.out.print("Enter Price: ");
-                                    double purchasePrice =input.nextDouble();
+                                    
 
                                     input.nextLine();
 
@@ -165,7 +163,7 @@ public class Main {
                                             purchasebookid,
                                             p1book.getTitle(),
                                             customerName,
-                                            purchasePrice
+                                            p1book.getPrice()
                                     );
 
                                     purchases.add(p1);
