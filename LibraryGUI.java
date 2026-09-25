@@ -3,84 +3,58 @@ import java.util.ArrayList;
 
 public class LibraryGUI {
 
-    static ArrayList<Reader> readers =
+        static ArrayList<Reader> readers =
             FileManager.loadReaders();
 
-    public static void login() {
+            public static boolean login() {
 
-        System.out.println();
-        System.out.println("========== LOGIN ==========");
+             System.out.println();
+             System.out.println("========== LOGIN ==========");
 
-        String username =
-                JOptionPane.showInputDialog(
-                        "Enter Username:"
-                );
+             String username = JOptionPane.showInputDialog("Enter Username:");
 
-        String password =
-                JOptionPane.showInputDialog(
-                        "Enter Password:"
-                );
+         String password =JOptionPane.showInputDialog( "Enter Password:");
 
-        if (username == null || password == null) {
-            return;
+          if (username == null || password == null) {
+              return false;
         }
 
         for (Reader reader : readers) {
 
-            if (reader.getuserName().equals(username)
-                    && reader.getPassword().equals(password)) {
+              if (reader.getuserName().equals(username) && reader.getPassword().equals(password)) {
 
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Login Successful!\nWelcome "
-                                + reader.getfullname()
-                );
+            JOptionPane.showMessageDialog( null,"Login Successful!\nWelcome "+ reader.getfullname() );
 
-                return;
-            }
+            return true;
         }
-
-        JOptionPane.showMessageDialog(
-                null,
-                "Wrong username or password!"
-        );
     }
+
+           JOptionPane.showMessageDialog(null, "Wrong username or password!");
+
+              return false;
+}
+
+  
 
     public static void signUp() {
 
         System.out.println();
         System.out.println("========== SIGN UP ==========");
 
-        String fullName =
-                JOptionPane.showInputDialog(
-                        "Enter Full Name:"
-                );
+        String fullName =JOptionPane.showInputDialog("Enter Full Name:");
 
-        String username =
-                JOptionPane.showInputDialog(
-                        "Enter Username:"
-                );
+        String username =JOptionPane.showInputDialog("Enter Username:");
 
-        String password =
-                JOptionPane.showInputDialog(
-                        "Enter Password:"
-                );
+        String password =JOptionPane.showInputDialog("Enter Password:");
 
-        if (fullName == null
-                || username == null
-                || password == null) {
+        if (fullName == null || username == null || password == null) {
 
             return;
         }
 
-        if (fullName.isEmpty()
-                || username.isEmpty()
-                || password.isEmpty()) {
+        if (fullName.isEmpty()|| username.isEmpty()|| password.isEmpty()) {
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Please fill all fields!"
-            );
+            JOptionPane.showMessageDialog(null, "Please fill all fields!");
 
             return;
         }
@@ -89,10 +63,7 @@ public class LibraryGUI {
 
             if (reader.getuserName().equals(username)) {
 
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Username already exists!"
-                );
+                JOptionPane.showMessageDialog( null,"Username already exists!");
 
                 return;
             }

@@ -23,6 +23,10 @@ public class Main {
                 case 1:
                     LibraryGUI.login();
 
+                    boolean success = LibraryGUI.login();
+
+                     if (success) {
+
                     Library library = new Library();
                     ArrayList<Purchase> purchases = FileManager.loadPurchases();
 
@@ -158,12 +162,9 @@ public class Main {
 
                                   
 
-                                    Purchase p1 = new Purchase(
-                                            purchaseid ,
-                                            purchasebookid,
-                                            p1book.getTitle(),
-                                            customerName,
-                                            p1book.getPrice()
+                                    Purchase p1 = new Purchase(purchaseid , purchasebookid, p1book.getTitle(),
+                                     customerName, 
+                                    p1book.getPrice()
                                     );
 
                                     purchases.add(p1);
@@ -197,6 +198,10 @@ public class Main {
                 }
 
                     break;
+
+                    } else {
+                   System.out.println("Login failed!");}
+
                 
             
 
