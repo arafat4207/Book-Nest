@@ -156,7 +156,7 @@ public class Main {
 
                                     
 
-                                    input.nextLine();
+                                  
 
                                     Purchase p1 = new Purchase(
                                             purchaseid ,
