@@ -146,46 +146,55 @@ public class Main {
                         break;
 
                     case 8:
-
                         
-                        String purchaseid = "P" + (purchases.size() + 101);
+                                String purchaseid = "P" + (purchases.size() + 101);
 
-                        System.out.print("Enter Book ID: ");
-                        String purchasebookid = input.nextLine();
+                                System.out.print("Enter Book ID: ");
+                                String purchasebookid = input.nextLine();
 
-                        Book p1book =library.searchBook(purchasebookid);
+                                Book p1book = library.searchBook(purchasebookid);
 
                                 if (p1book != null) {
 
-                                    System.out.print("Enter Customer Name: ");
+               
+                                  if (p1book.getQuantity() <= 0) {
+
+                                    System.out.println("Book is out of stock.");
+
+                                   } else {
+
+                                  System.out.print("Enter Customer Name: ");
                                     String customerName = input.nextLine();
-                                    
-                                    
 
-                                    Purchase p1 = new Purchase(
-                                            purchaseid ,
-                                            purchasebookid,
-                                            p1book.getTitle(),
-                                            customerName,
-                                            p1book.getPrice()
-                                    );
+                              Purchase p1 = new Purchase(
+                                        purchaseid,
+                                        purchasebookid,
+                                        p1book.getTitle(),
+                                        customerName,
+                                       p1book.getPrice()
+                                );
 
-                                    purchases.add(p1);
+            
+                           library.purchaseBook(purchasebookid);
 
-                                    FileManager.savePurchases(purchases);
+            
+                           purchases.add(p1);
 
-                                    System.out.println("\nPurchase successful!" );
+                           FileManager.savePurchases(purchases);
 
-                                    p1.displayPurchase();
+                          System.out.println("\nPurchase successful!");
 
-                                } else {
+                         p1.displayPurchase();
 
-                                    System.out.println(
-                                            "\nBook not found."
-                                    );
-                                }
+        }
 
-                                break;
+    } 
+                      else {
+
+                        System.out.println("\nBook not found.");
+                           }
+
+                       break;
 
 
                     case 9:
