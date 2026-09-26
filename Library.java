@@ -15,6 +15,8 @@ public class Library{
 
         System.out.println("Book added Successfully!");
     }
+
+
     public void addStock(String bookId, int amount){
         Book book = searchBook(bookId);
         if(book == null){
@@ -26,6 +28,35 @@ public class Library{
             System.out.println("Stock added sucessfully. New quantity : " + book.getQuantity());
         }
     }
+
+    // eta kinle stock komanor jonno 
+    public boolean purchaseBook(String bookId){
+
+    Book book = searchBook(bookId);
+
+    if(book == null){
+
+        System.out.println("Book not found.");
+        return false;
+
+    }
+
+    if(book.getQuantity() <= 0){
+
+        System.out.println("Book is out of stock.");
+        return false;
+
+    }
+
+    book.setQuantity(book.getQuantity() - 1);
+
+    FileManager.saveBooks(books);
+
+    System.out.println("Stock reduced.");
+    System.out.println("Remaining stock: " + book.getQuantity());
+
+    return true;
+}
 
 
         public void showBooks() {
@@ -108,52 +139,48 @@ public class Library{
     }
 
 
+       public void borrowBook(String bookId) {
 
+    Book book = searchBook(bookId);
 
-        public void borrowBook(String bookId) {
+    if (book == null) {
 
-        Book book = searchBook(bookId);
+        System.out.println("Book not found.");
 
-        if (book == null) {
+    } else if (book.getQuantity() <= 0) {
 
-            System.out.println("Book not found.");
+        System.out.println("Book is out of stock.");
 
-        } else if (!book.isAvailable()) {
+    } else {
 
-            System.out.println("Book is already borrowed.");
+        book.setQuantity(book.getQuantity() - 1);
 
-        } else {
+        FileManager.saveBooks(books);
 
-            book.setAvailable(false);
-
-            FileManager.saveBooks(books);
-
-            System.out.println("Book borrowed successfully.");
-        }
+        System.out.println("Book borrowed successfully.");
+        System.out.println("Remaining stock: " + book.getQuantity());
     }
-
-    
+}
 
 
         public void returnBook(String bookId) {
 
-        Book book = searchBook(bookId);
+    Book book = searchBook(bookId);
 
-        if (book == null) {
+    if (book == null) {
 
-            System.out.println("Book not found.");
+        System.out.println("Book not found.");
 
-        } else if (book.isAvailable()) {
+    } else {
 
-            System.out.println("This book is already available.");
+        
+        book.setQuantity(book.getQuantity() + 1);
 
-        } else {
+        
+        FileManager.saveBooks(books);
 
-            book.setAvailable(true);
-
-            FileManager.saveBooks(books);
-
-            System.out.println("Book returned successfully.");
-        }
+        System.out.println("Book returned successfully.");
+        System.out.println("Current stock: " + book.getQuantity());
     }
+}
 }
