@@ -15,7 +15,17 @@ public class Library{
 
         System.out.println("Book added Successfully!");
     }
-
+    public void addStock(String bookId, int amount){
+        Book book = searchBook(bookId);
+        if(book == null){
+            System.out.println("Book not found.");
+        }
+        else{
+            book.addStock(amount);
+            FileManager.saveBooks(books);
+            System.out.println("Stock added sucessfully. New quantity : " + book.getQuantity());
+        }
+    }
 
 
         public void showBooks() {

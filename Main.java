@@ -38,7 +38,8 @@ public class Main {
                 System.out.println("6. Borrow Book");
                 System.out.println("7. Return Book");
                 System.out.println("8. Purchase Book");
-                System.out.println("9. Exit");
+                System.out.println("9.Add Stock");
+                System.out.println("10. Exit");
                 System.out.print("\nEnter your choice: ");
 
                 int choice =input.nextInt();
@@ -65,7 +66,11 @@ public class Main {
 
                         input.nextLine();
 
-                        Book b1 = new Book(id, title, author,category, price);
+                        System.out.println("Enter Quantity :");
+                        int quantity = input.nextInt();
+                        input.nextLine();
+
+                        Book b1 = new Book(id, title, author,category, price, quantity);
                         
                         library.addBook(b1);
                         break;
@@ -183,12 +188,21 @@ public class Main {
 
                                 break;
 
-                    case 9 :
+                    case 10 :
                         running = false ;
                         System.out.println("Thank You!");
                         break;
 
+                    case 9:
+                     System.out.print("Enter Book ID: ");
+                     String stockBookId = input.nextLine();
 
+                     System.out.print("Enter quantity to add: ");
+                     int stockAmount = input.nextInt();
+                     input.nextLine();
+
+                     library.addStock(stockBookId, stockAmount);
+                     break;
                 
                     default:
                         System.out.println("Invalid Input.");
