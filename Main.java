@@ -1,4 +1,3 @@
-import java.lang.classfile.instruction.SwitchCase;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,7 +20,8 @@ public class Main {
 
             switch (number) {
                 case 1:
-                    LibraryGUI.login();
+                    boolean success = LibraryGUI.login();
+                    if (success) {
 
                     Library library = new Library();
                     ArrayList<Purchase> purchases = FileManager.loadPurchases();
@@ -38,13 +38,13 @@ public class Main {
                 System.out.println("6. Borrow Book");
                 System.out.println("7. Return Book");
                 System.out.println("8. Purchase Book");
-                System.out.println("9.Add Stock");
+                System.out.println("9. Add Stock");
                 System.out.println("10. Exit");
                 System.out.print("\nEnter your choice: ");
 
                 int choice =input.nextInt();
                 input.nextLine();
-                
+
 
                 switch (choice) {
 
@@ -63,8 +63,8 @@ public class Main {
 
                         System.out.println("Enter Price :");
                         double price = input.nextDouble();
-
-                        input.nextLine();
+                     
+                       input.nextLine();
 
                         System.out.println("Enter Quantity :");
                         int quantity = input.nextInt();
@@ -76,6 +76,7 @@ public class Main {
                         break;
                     
                     case 2:
+
                          library.showBooks();
                          break;
                     
@@ -105,7 +106,7 @@ public class Main {
                         System.out.println("Enter Category : ");
                         String newcategory = input.nextLine();
 
-                        System.out.println("Enter Price :");
+                        System.out.println("Enter Price :"); 
                         double newprice = input.nextDouble();
 
                         input.nextLine();
@@ -158,10 +159,8 @@ public class Main {
 
                                     System.out.print("Enter Customer Name: ");
                                     String customerName = input.nextLine();
-
                                     
-
-                                    input.nextLine();
+                                    
 
                                     Purchase p1 = new Purchase(
                                             purchaseid ,
@@ -188,21 +187,24 @@ public class Main {
 
                                 break;
 
-                    case 10 :
-                        running = false ;
-                        System.out.println("Thank You!");
-                        break;
 
                     case 9:
                      System.out.print("Enter Book ID: ");
                      String stockBookId = input.nextLine();
 
                      System.out.print("Enter quantity to add: ");
-                     int stockAmount = input.nextInt();
+                    
+                     int stockAmount = input.nextInt(); 
+
                      input.nextLine();
 
                      library.addStock(stockBookId, stockAmount);
                      break;
+
+                     case 10 :
+                        running = false ;
+                        System.out.println("Thank You!");
+                        break;
                 
                     default:
                         System.out.println("Invalid Input.");
@@ -211,6 +213,11 @@ public class Main {
                 }
 
                     break;
+            }     
+                    else  {
+                     System.out.println("Login failed.");
+                }
+
                 
             
 

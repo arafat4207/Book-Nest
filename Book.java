@@ -5,7 +5,7 @@ public class Book implements Serializable{
     private String author;
     private String catagory;
     private double price;
-    // private boolean available;
+     private boolean available;
     private int quantity;
 
     public Book(String bookId, String title, String author, String catagory, double price, int quantity) {
@@ -15,7 +15,7 @@ public class Book implements Serializable{
         this.author = author;
         this.catagory = catagory;
         this.price = price;
-       // this.available = true;
+        this.available = true;
         this.quantity = quantity;
     }
     public String getBookId() {
@@ -33,9 +33,9 @@ public class Book implements Serializable{
     public double getPrice() {
         return price;
     }
-  // public boolean isAvailable() {
-     //   return available;
-  // }
+   public boolean isAvailable() {
+        return available;
+   }
     public int getQuantity(){
         return quantity;
     }
@@ -58,9 +58,9 @@ public class Book implements Serializable{
     public void setQuantity(int quantity){
         this.quantity = quantity;
     }
-   // public void setAvailable(boolean available) {
-      //  this.available = available;
-   // }
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
     public void displayInfo() {
         System.out.println("Book ID: " + bookId);
         System.out.println("Title: " + title);
